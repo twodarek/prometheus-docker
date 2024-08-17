@@ -1,7 +1,9 @@
 FROM prom/prometheus:latest
 
+USER root
 RUN mkdir -p /prometheus-local/data
 RUN chmod -R 777 /prometheus-local
+USER nobody
 
 CMD [ "--config.file=/etc/prometheus/prometheus.yml", \
       "--storage.tsdb.path=/prometheus-local", \
